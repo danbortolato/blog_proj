@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://kit.fontawesome.com/621a6c8439.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microblog</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="navbar__brand">
+      <img class="navbar__logo" src="/static/logo.svg" alt="The Microblog logo" />
+    </div>
+    <ul class="navbar__navigation">
+      <li class="navbar__navigation-item">
+        <a href="https://www.linkedin.com/in/daniel-bortolato-771131ab/" class="navbar__link"><i class="fa-brands fa-linkedin"></i></a>
+      </li>
+      <li class="navbar__navigation-item">
+        <a href="https://github.com/danbortolato" class="navbar__link"><i class="fa-brands fa-github-square"></i></a>
+      </li>
+    </ul>
+  </header>
+  <main class="main">
+    <section>
+      <h1>Poste sua mensagem</h1>
+      <form class="form" method="POST">
+        <p class="form__input">
+          <label for="entry" class="form__label">Mensagem:</label>
+          <textarea name="content" id="dado" class="form__textarea"></textarea>
+        </p>
+        <button type="submit" class="form__submit">Enviar</button>
+      </form>
+    </section>
+    <section>
+      <h1>Postagens Recentes</h1>
+      {% for dado in dados %}
+      <article class="dado">
+        <div>
+          <h2 class="entry__title">{{ dado[0] | truncate(30, true) }}</h2>
+          <time class="entry__date" datetime="{{ dado[1] }}">• {{ dado[2] }}</time>
+        </div>
+        <p class="entry__content">
+          {{ dado[0] }}
+        </p>
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+  <footer class="footer">
+    <div>
+        <a> ® Daniel Bortolato</a>
+
+    </div>
+  </footer>
+</body>
+
+</html>
